@@ -1,0 +1,53 @@
+# Configuration for RoboClaw via Arduino USB Bridge
+# Standard single motor configuration for M1A/M1B terminals
+# The Arduino acts as a USB-to-serial bridge to the RoboClaw
+# while also providing encoder data separately
+
+motor_driver_node:
+  ros__parameters:
+    # Direct RoboClaw USB connection
+    device_name: "/dev/ttyACM0"
+    baud_rate: 38400             # RoboClaw baud rate
+    device_port: 128             # RoboClaw address
+
+    # Incremental acceleration
+    accel_quad_pulses_per_second: 500
+
+    # Debug flags
+    do_debug: true
+    do_low_level_debug: false
+
+    # Motor 1 PID configuration (single motor setup)
+    m1_p: 7.26239
+    m1_i: 1.36838
+    m1_d: 0.0
+    m1_qpps: 2437
+    m1_max_current: 6.0
+
+    # Motor 2 settings (mirror M1 for single motor using both channels)
+    m2_p: 7.26239               # Same as M1 for parallel operation
+    m2_i: 1.36838               # Same as M1 for parallel operation  
+    m2_d: 0.0
+    m2_qpps: 2437               # Same as M1 for parallel operation
+    m2_max_current: 6.0         # Same as M1 for parallel operation
+
+    # Robot physical parameters
+    max_angular_velocity: 1.0    # Maximum angular velocity (rad/s)
+    max_linear_velocity: 0.2     # Maximum linear velocity (m/s)
+    max_seconds_uncommanded_travel: 5.0  # Safety timeout
+
+    # Odometry and feedback
+    publish_joint_states: true
+    publish_odom: true
+    sensor_update_rate: 20.0
+
+    # FIXED: Critical parameter for velocity conversion
+    quad_pulses_per_meter: 500   # Was 0 - prevented any movement!
+    quad_pulses_per_revolution: 1000.0
+
+    # Robot dimensions (for differential drive - not used in single motor)
+    wheel_radius: 0.1
+    wheel_separation: 0.3
+    
+    # FIX DIRECTION: Invert motor direction in software
+    invert_m1: true              # This will reverse M1 direction

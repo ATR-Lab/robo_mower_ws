@@ -1,0 +1,49 @@
+# ROS2 RoboClaw Dual Motor Control System
+
+## Directories and Files to Ignore
+
+# Build directories
+build/
+install/
+log/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Compiled Python files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# ROS2 specific
+.colcon_install_layout
+.colcon_test_layout
+
+# Arduino IDE
+*.fqbn
+*.elf
+*.hex
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Hardware specific - keep user configs local
+udev_rules/
+device_configs/
+calibration_data/
