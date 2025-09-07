@@ -1,0 +1,53 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Robot: Forward",
+            "type": "shell",
+            "command": "echo 'forward' | nc 192.168.2.144 8888",
+            "group": "robot",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Robot: Backward", 
+            "type": "shell",
+            "command": "echo 'backward' | nc 192.168.2.144 8888",
+            "group": "robot"
+        },
+        {
+            "label": "Robot: Turn Left",
+            "type": "shell", 
+            "command": "echo 'left' | nc 192.168.2.144 8888",
+            "group": "robot"
+        },
+        {
+            "label": "Robot: Turn Right",
+            "type": "shell",
+            "command": "echo 'right' | nc 192.168.2.144 8888", 
+            "group": "robot"
+        },
+        {
+            "label": "Robot: Stop",
+            "type": "shell",
+            "command": "echo 'stop' | nc 192.168.2.144 8888",
+            "group": "robot"
+        },
+        {
+            "label": "Robot: Emergency Stop",
+            "type": "shell",
+            "command": "echo 'emergency' | nc 192.168.2.144 8888",
+            "group": "robot"
+        },
+        {
+            "label": "Robot: Status",
+            "type": "shell",
+            "command": "echo 'status' | nc 192.168.2.144 8888",
+            "group": "robot"
+        }
+    ]
+}

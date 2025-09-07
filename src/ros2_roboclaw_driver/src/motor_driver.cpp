@@ -26,30 +26,30 @@ MotorDriver::MotorDriver()
 void MotorDriver::declareParameters() {
   this->declare_parameter<int>("accel_quad_pulses_per_second", 600);
   this->declare_parameter<int>("baud_rate", 38400);
-  this->declare_parameter<std::string>("device_name", "roboclaw");
-  this->declare_parameter<int>("device_port", 123);
+  this->declare_parameter<std::string>("device_name", "/dev/ttyACM1");
+  this->declare_parameter<int>("device_port", 128);
   this->declare_parameter<bool>("do_debug", false);
   this->declare_parameter<bool>("do_low_level_debug", false);
-  this->declare_parameter<float>("m1_p", 0.0);
-  this->declare_parameter<float>("m1_i", 0.0);
+  this->declare_parameter<float>("m1_p", 7.26239);
+  this->declare_parameter<float>("m1_i", 1.36838);
   this->declare_parameter<float>("m1_d", 0.0);
-  this->declare_parameter<int>("m1_qpps", 0);
-  this->declare_parameter<float>("m1_max_current", 0.0);
-  this->declare_parameter<float>("m2_p", 0.0);
-  this->declare_parameter<float>("m2_i", 0.0);
+  this->declare_parameter<int>("m1_qpps", 8000);
+  this->declare_parameter<float>("m1_max_current", 15.0);
+  this->declare_parameter<float>("m2_p", 7.26239);
+  this->declare_parameter<float>("m2_i", 1.36838);
   this->declare_parameter<float>("m2_d", 0.0);
-  this->declare_parameter<int>("m2_qpps", 0);
-  this->declare_parameter<float>("max_angular_velocity", 0.0);
-  this->declare_parameter<float>("max_linear_velocity", 0.0);
-  this->declare_parameter<float>("m2_max_current", 0.0);
-  this->declare_parameter<float>("max_seconds_uncommanded_travel", 0.0);
-  this->declare_parameter<bool>("publish_joint_states", true);
-  this->declare_parameter<bool>("publish_odom", true);
-  this->declare_parameter<int>("quad_pulses_per_meter", 0);
+  this->declare_parameter<int>("m2_qpps", 8000);
+  this->declare_parameter<float>("max_angular_velocity", 6.0);
+  this->declare_parameter<float>("max_linear_velocity", 2.0);
+  this->declare_parameter<float>("m2_max_current", 15.0);
+  this->declare_parameter<float>("max_seconds_uncommanded_travel", 2.0);
+  this->declare_parameter<bool>("publish_joint_states", false);
+  this->declare_parameter<bool>("publish_odom", false);
+  this->declare_parameter<int>("quad_pulses_per_meter", 500);
   this->declare_parameter<float>("quad_pulses_per_revolution", 0);
   this->declare_parameter<float>("sensor_update_rate", 20.0);  // Hz
-  this->declare_parameter<float>("wheel_radius", 0.0);
-  this->declare_parameter<float>("wheel_separation", 0.0);
+  this->declare_parameter<float>("wheel_radius", 0.1);
+  this->declare_parameter<float>("wheel_separation", 0.25);
 }
 
 void MotorDriver::initializeParameters() {

@@ -1,0 +1,37 @@
+# VS Code Robot Control Scripts
+# Save these as .http files in VS Code and use REST Client extension
+
+### Robot Status Check
+GET http://192.168.2.144:5000/robot/status
+
+### Move Forward
+POST http://192.168.2.144:5000/robot/forward
+
+### Move Backward  
+POST http://192.168.2.144:5000/robot/backward
+
+### Turn Left
+POST http://192.168.2.144:5000/robot/left
+
+### Turn Right
+POST http://192.168.2.144:5000/robot/right
+
+### Stop Robot
+POST http://192.168.2.144:5000/robot/stop
+
+### Custom Movement
+POST http://192.168.2.144:5000/robot/move
+Content-Type: application/json
+
+{
+    "linear": 1.0,
+    "angular": 0.0
+}
+
+### Execute Custom Command
+POST http://192.168.2.144:5000/system/execute
+Content-Type: application/json
+
+{
+    "command": "python3 emergency_stop.py"
+}

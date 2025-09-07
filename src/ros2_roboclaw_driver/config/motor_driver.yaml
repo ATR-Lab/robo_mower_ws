@@ -37,8 +37,9 @@ motor_driver_node:
     max_seconds_uncommanded_travel: 5.0  # Safety timeout
 
     # Odometry and feedback
-    publish_joint_states: true
-    publish_odom: true
+    # DISABLED: No encoders connected to RoboClaw - Arduino provides encoder data
+    publish_joint_states: false
+    publish_odom: false
     sensor_update_rate: 20.0
 
     # FIXED: Critical parameter for velocity conversion

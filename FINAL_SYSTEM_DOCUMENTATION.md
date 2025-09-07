@@ -23,8 +23,8 @@ This documentation covers a complete dual-motor control system using ROS2 Jazzy 
 - USB cables for both devices
 
 ### Connections
-- **RoboClaw**: Connected to PC via USB (`/dev/ttyACM0`)
-- **Arduino**: Connected to PC via USB (`/dev/ttyACM1`)
+- **RoboClaw**: Connected to Pi via USB (`/dev/ttyACM1`)
+- **Arduino**: Connected to Pi via USB (`/dev/ttyACM0`)
 - **Motor 1 (Right)**: Connected to RoboClaw M1A/M1B terminals
 - **Motor 2 (Left)**: Connected to RoboClaw M2A/M2B terminals
 
@@ -70,7 +70,7 @@ ros2_ws/
 ├── src/
 │   └── ros2_roboclaw_driver/          # RoboClaw ROS2 driver package
 ├── arduino_roboclaw_usb_bridge/
-│   └── encoder_publisher.ino          # Arduino encoder sketch
+│   └── arduino_roboclaw_usb_bridge.ino    # Arduino encoder sketch
 ├── arduino_encoder_bridge.py          # Python bridge for encoder data
 ├── real_time_encoder_viewer.py        # Real-time encoder monitoring
 └── FINAL_SYSTEM_DOCUMENTATION.md      # This documentation
@@ -87,7 +87,7 @@ source install/setup.bash
 
 ### 2. Upload Arduino Sketch
 1. Open Arduino IDE
-2. Load `arduino_roboclaw_usb_bridge/encoder_publisher.ino`
+2. Load `arduino_roboclaw_usb_bridge/arduino_roboclaw_usb_bridge.ino`
 3. Select Arduino Uno board
 4. Select correct port (`/dev/ttyACM0`)
 5. Upload the sketch
@@ -209,7 +209,7 @@ lsusb
 ls -la /dev/ttyACM*
 
 # Test Arduino connection
-arduino --board arduino:avr:uno --port /dev/ttyACM0 --verify encoder_publisher.ino
+arduino --board arduino:avr:uno --port /dev/ttyACM0 --verify arduino_roboclaw_usb_bridge.ino
 ```
 
 ### RoboClaw Communication
@@ -257,14 +257,14 @@ ros2 topic echo /arduino_encoder
 
 ### ✅ Current System State (July 29, 2025) - FULLY OPERATIONAL
 - **RoboClaw Driver**: ✅ OPERATIONAL
-  - Device: `/dev/ttyACM0` (RoboClaw 2x60a v4.3.6)
+  - Device: `/dev/ttyACM1` (RoboClaw 2x60a v4.3.6)
   - Status: USB connection stable, 38400 baud
   - Battery: 12V main battery connected and healthy
   - Motor Control: Both M1 and M2 channels responding to `/cmd_vel` commands
   - PID Controllers: Active and tuned for both motors
   
 - **Arduino Encoder Bridge**: ✅ OPERATIONAL  
-  - Device: `/dev/ttyACM1` (Arduino Uno with dual encoder reading)
+  - Device: `/dev/ttyACM0` (Arduino Uno with dual encoder reading)
   - Status: Connected and publishing real-time encoder data
   - Publishing Rate: 20Hz to `/arduino_encoder` topic
   - Encoder Performance: Both encoders providing smooth position feedback
