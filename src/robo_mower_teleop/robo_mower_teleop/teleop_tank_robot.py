@@ -158,15 +158,27 @@ class TankTeleopNode(Node):
                 rclpy.spin_once(self, timeout_sec=0.01)
                 
         except Exception as e:
-            self.get_logger().error(f"Error in teleop loop: {e}")
+            try:
+                if rclpy.ok():
+                    self.get_logger().error(f"Error in teleop loop: {e}")
+                else:
+                    print(f"Error in teleop loop: {e}")
+            except:
+                print(f"Error in teleop loop: {e}")
         finally:
             # Restore terminal settings
             termios.tcsetattr(sys.stdin, termios.TCSADRAIN, old_attr)
             
-            # Send stop command before exit
-            stop_twist = Twist()
-            self.cmd_vel_pub.publish(stop_twist)
-            self.get_logger().info("Tank robot stopped and teleop exited.")
+            # Send stop command before exit (only if ROS context is valid)
+            try:
+                if rclpy.ok() and hasattr(self, 'cmd_vel_pub'):
+                    stop_twist = Twist()
+                    self.cmd_vel_pub.publish(stop_twist)
+                    self.get_logger().info("Tank robot stopped and teleop exited.")
+                else:
+                    print("Tank robot stopped and teleop exited.")
+            except:
+                print("Tank robot stopped and teleop exited.")
 
 
 def main():
@@ -201,10 +213,15 @@ def main():
     finally:
         # Cleanup
         try:
-            teleop_node.destroy_node()
+            if 'teleop_node' in locals():
+                teleop_node.destroy_node()
         except:
             pass
-        rclpy.shutdown()
+        try:
+            if rclpy.ok():
+                rclpy.shutdown()
+        except:
+            pass
         print("Teleoperation ended.")
 
 

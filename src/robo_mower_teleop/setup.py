@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'teleop_tank_robot = robo_mower_teleop.teleop_tank_robot:main',
         ],
     },
 )
