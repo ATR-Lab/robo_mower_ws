@@ -1,6 +1,6 @@
 # ROS2 RoboClaw Dual Motor Control with Real-Time Encoder Feedback
 
-� **FULLY OPERATIONAL & TESTED** ✅ - Real-time encoder monitoring during motor movement successfully implemented.
+✅ **FULLY OPERATIONAL & TESTED** ✅ - Real-time encoder monitoring during motor movement successfully implemented.
 
 ## 🚀 Quick Start
 
