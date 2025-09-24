@@ -90,3 +90,5 @@ srv/_*.py
 
 # Catkin custom files
 CATKIN_IGNORE
+src/rplidar_ros/
+src/sllidar_ros2/

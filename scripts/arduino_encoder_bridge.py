@@ -31,7 +31,7 @@ class ArduinoEncoderBridge(Node):
         self.timer = self.create_timer(0.05, self.publish_encoders)
         
         # Arduino serial connection
-        self.arduino_port = '/dev/ttyACM1'
+        self.arduino_port = '/dev/ttyACM0'
         self.baud_rate = 38400
         self.arduino = None
         

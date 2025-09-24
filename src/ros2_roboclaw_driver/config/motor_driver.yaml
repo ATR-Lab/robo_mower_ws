@@ -5,9 +5,9 @@
 
 motor_driver_node:
   ros__parameters:
-    # Direct RoboClaw USB connection
-    device_name: "/dev/ttyACM0"
-    baud_rate: 38400             # RoboClaw baud rate
+    # RoboClaw via Arduino USB Bridge
+    device_name: "/dev/ttyACM2"
+    baud_rate: 38400             # Match Arduino bridge baud rate
     device_port: 128             # RoboClaw address
 
     # Incremental acceleration
