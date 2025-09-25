@@ -1,4 +1,4 @@
-# Configuration for RoboClaw via Arduino USB Bridge
+# Config    device_name: /dev/ttyACM0ration for RoboClaw via Arduino USB Bridge
 # Standard single motor configuration for M1A/M1B terminals
 # The Arduino acts as a USB-to-serial bridge to the RoboClaw
 # while also providing encoder data separately
@@ -6,7 +6,7 @@
 motor_driver_node:
   ros__parameters:
     # RoboClaw via Arduino USB Bridge
-    device_name: "/dev/ttyACM2"
+    device_name: "/dev/ttyACM0"
     baud_rate: 38400             # Match Arduino bridge baud rate
     device_port: 128             # RoboClaw address
 
